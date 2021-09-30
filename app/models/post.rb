@@ -8,6 +8,10 @@ class Post < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :fans,
+             :through => :likes,
+             :source => :user
+
   # Validations
 
   validates :body, :presence => true

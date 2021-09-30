@@ -30,6 +30,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :favorites,
+             :through => :liked_posts,
+             :source => :post
+
   # Validations
 
   validates :username, :uniqueness => true
