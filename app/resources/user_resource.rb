@@ -31,7 +31,35 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :my_follows, resource: UserResource do
+    assign_each do |user, users|
+      users.select do |u|
+        u.id.in?(user.my_follows.map(&:id))
+      end
+    end
+  end
+
+  has_many :my_followers, resource: UserResource do
+    assign_each do |user, users|
+      users.select do |u|
+        u.id.in?(user.my_followers.map(&:id))
+      end
+    end
+  end
+
   many_to_many :favorites,
                resource: PostResource
 
+
+  filter :following_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:my_follows).where(:follows => {:following_id => value})
+    end
+  end
+
+  filter :follower_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:my_followers).where(:follows => {:follower_id => value})
+    end
+  end
 end
