@@ -4,6 +4,8 @@ RSpec.describe Post, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:user) }
+
     end
 
     describe "InDirect Associations" do
