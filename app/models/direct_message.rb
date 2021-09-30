@@ -1,6 +1,10 @@
 class DirectMessage < ApplicationRecord
   # Direct associations
 
+  belongs_to :recipient,
+             :class_name => "User",
+             :counter_cache => :recieved_messages_count
+
   belongs_to :sender,
              :class_name => "User",
              :counter_cache => :sent_messages_count
