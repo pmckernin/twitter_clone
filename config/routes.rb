@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes
   resources :direct_messages
   resources :follows
   resources :posts
