@@ -3,7 +3,7 @@ class DirectMessagesController < ApplicationController
 
   # GET /direct_messages
   def index
-    @direct_messages = DirectMessage.all
+    @direct_messages = DirectMessage.page(params[:page]).per(10)
   end
 
   # GET /direct_messages/1
