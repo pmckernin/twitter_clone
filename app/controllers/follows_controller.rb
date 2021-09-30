@@ -5,7 +5,8 @@ class FollowsController < ApplicationController
 
   # GET /follows
   def index
-    @follows = Follow.page(params[:page]).per(10)
+    @q = Follow.ransack(params[:q])
+    @follows = @q.result(:distinct => true).includes(:leader, :user).page(params[:page]).per(10)
   end
 
   # GET /follows/1

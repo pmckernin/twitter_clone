@@ -3,7 +3,8 @@ class DirectMessagesController < ApplicationController
 
   # GET /direct_messages
   def index
-    @direct_messages = DirectMessage.page(params[:page]).per(10)
+    @q = DirectMessage.ransack(params[:q])
+    @direct_messages = @q.result(:distinct => true).includes(:sender, :recipient).page(params[:page]).per(10)
   end
 
   # GET /direct_messages/1
