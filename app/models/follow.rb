@@ -5,6 +5,8 @@ class Follow < ApplicationRecord
 
   # Validations
 
+  validates :following_id, :presence => true
+
   # Scopes
 
   def to_s
