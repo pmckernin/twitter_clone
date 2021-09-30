@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :followings,
+             :class_name => "Follow",
+             :foreign_key => "following_id",
+             :dependent => :destroy
+
   has_many   :recieved_messages,
              :class_name => "DirectMessage",
              :foreign_key => "recipient_id",
