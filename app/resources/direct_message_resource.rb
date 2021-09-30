@@ -15,5 +15,4 @@ class DirectMessageResource < ApplicationResource
              resource: UserResource
 
   # Indirect associations
-
 end

@@ -50,16 +50,15 @@ class UserResource < ApplicationResource
   many_to_many :favorites,
                resource: PostResource
 
-
   filter :following_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:my_follows).where(:follows => {:following_id => value})
+      scope.eager_load(:my_follows).where(follows: { following_id: value })
     end
   end
 
   filter :follower_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:my_followers).where(:follows => {:follower_id => value})
+      scope.eager_load(:my_followers).where(follows: { follower_id: value })
     end
   end
 end

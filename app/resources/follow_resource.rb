@@ -15,5 +15,4 @@ class FollowResource < ApplicationResource
              foreign_key: :follower_id
 
   # Indirect associations
-
 end

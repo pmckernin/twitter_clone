@@ -13,7 +13,7 @@ class Api::V1::DirectMessagesController < Api::V1::GraphitiController
     direct_message = DirectMessageResource.build(params)
 
     if direct_message.save
-      render jsonapi: direct_message, status: 201
+      render jsonapi: direct_message, status: :created
     else
       render jsonapi_errors: direct_message
     end
@@ -33,7 +33,7 @@ class Api::V1::DirectMessagesController < Api::V1::GraphitiController
     direct_message = DirectMessageResource.find(params)
 
     if direct_message.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: direct_message
     end
