@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= post.user_id %></dd>
+      <dd>
+        <% if @post.user.present? %>
+          <%= link_to post.user, post.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
       <dt>Body</dt>

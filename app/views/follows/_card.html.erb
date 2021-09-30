@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Follower</dt>
       <!-- Display follower_id start -->
-      <dd><%= follow.follower_id %></dd>
+      <dd>
+        <% if @follow.leader.present? %>
+          <%= link_to follow.leader, follow.leader %>
+        <% end %>
+      </dd>
       <!-- Display follower_id end -->
 
       <dt>Following</dt>
       <!-- Display following_id start -->
-      <dd><%= follow.following_id %></dd>
+      <dd>
+        <% if @follow.user.present? %>
+          <%= link_to follow.user, follow.user %>
+        <% end %>
+      </dd>
       <!-- Display following_id end -->
 
     </dl>
