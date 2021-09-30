@@ -31,4 +31,7 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :favorites,
+               resource: PostResource
+
 end
