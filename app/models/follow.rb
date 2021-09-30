@@ -1,6 +1,11 @@
 class Follow < ApplicationRecord
   # Direct associations
 
+  belongs_to :leader,
+             :class_name => "User",
+             :foreign_key => "follower_id",
+             :counter_cache => :followers_count
+
   # Indirect associations
 
   # Validations
