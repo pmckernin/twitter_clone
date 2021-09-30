@@ -12,6 +12,8 @@ RSpec.describe Follow, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:follower_id) }
+
     it { should validate_uniqueness_of(:following_id).scoped_to(:follower_id) }
 
     it { should validate_presence_of(:following_id) }
