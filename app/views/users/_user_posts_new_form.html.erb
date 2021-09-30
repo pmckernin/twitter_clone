@@ -1,41 +1,23 @@
-<!-- Form post start -->
 <%= form_with(model: @post, local: true) do |f| %>
-<!-- Form post end -->
 
-  <!-- Label and input for user_id start -->
-  <!-- Input for user_id start -->
   <%= f.hidden_field :user_id, value: @user.id %>
-  <!-- Input for user_id end -->
-  <!-- Label and input for user_id end -->
 
-  <!-- Label and input for body start -->
   <div class="form-group">
     <%= f.label :body %>
-    <!-- Input for body start -->
     <%= f.text_area :body, rows: "3", class: "form-control" %>
-    <!-- Input for body end -->
   </div>
-  <!-- Label and input for body end -->
 
-  <!-- Label and input for reply_to_id start -->
   <div class="form-group">
     <%= f.label :reply_to_id %>
 
-    <!-- Input for reply_to_id start -->
     <%= f.text_field :reply_to_id, class: "form-control" %>
-    <!-- Input for reply_to_id end -->
   </div>
-  <!-- Label and input for reply_to_id end -->
 
-  <!-- Label and input for repost_of_id start -->
   <div class="form-group">
     <%= f.label :repost_of_id %>
 
-    <!-- Input for repost_of_id start -->
     <%= f.text_field :repost_of_id, class: "form-control" %>
-    <!-- Input for repost_of_id end -->
   </div>
-  <!-- Label and input for repost_of_id end -->
 
   <%= f.submit "Create post", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

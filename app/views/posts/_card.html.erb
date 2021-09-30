@@ -6,28 +6,20 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @post.user.present? %>
           <%= link_to post.user, post.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
       <dt>Body</dt>
-      <!-- Display body start -->
       <dd><%= post.body %></dd>
-      <!-- Display body end -->
 
       <dt>Reply to</dt>
-      <!-- Display reply_to_id start -->
       <dd><%= post.reply_to_id %></dd>
-      <!-- Display reply_to_id end -->
 
       <dt>Repost of</dt>
-      <!-- Display repost_of_id start -->
       <dd><%= post.repost_of_id %></dd>
-      <!-- Display repost_of_id end -->
 
     </dl>
 
@@ -36,7 +28,6 @@
         <%= link_to_show_or_back post, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link post start -->
       <div class="col">
         <% if current_user == @post.user %>
           <%= link_to edit_post_url(post), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -44,9 +35,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link post end -->
 
-      <!-- Delete link post start -->
       <div class="col">
         <% if current_user == @post.user %>
           <%= link_to post, method: :delete, data: { confirm: "Do you really want to delete this post?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -54,7 +43,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link post end -->
     </div>
   </div>
 

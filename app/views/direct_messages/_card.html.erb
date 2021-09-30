@@ -6,27 +6,21 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Sender</dt>
-      <!-- Display sender_id start -->
       <dd>
         <% if @direct_message.sender.present? %>
           <%= link_to direct_message.sender, direct_message.sender %>
         <% end %>
       </dd>
-      <!-- Display sender_id end -->
 
       <dt>Recipient</dt>
-      <!-- Display recipient_id start -->
       <dd>
         <% if @direct_message.recipient.present? %>
           <%= link_to direct_message.recipient, direct_message.recipient %>
         <% end %>
       </dd>
-      <!-- Display recipient_id end -->
 
       <dt>Body</dt>
-      <!-- Display body start -->
       <dd><%= direct_message.body %></dd>
-      <!-- Display body end -->
 
     </dl>
 
@@ -35,21 +29,17 @@
         <%= link_to_show_or_back direct_message, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link direct_message start -->
       <div class="col">
         <%= link_to edit_direct_message_url(direct_message), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link direct_message end -->
 
-      <!-- Delete link direct_message start -->
       <div class="col">
         <%= link_to direct_message, method: :delete, data: { confirm: "Do you really want to delete this direct_message?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link direct_message end -->
     </div>
   </div>
 
