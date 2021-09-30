@@ -5,6 +5,8 @@ class Follow < ApplicationRecord
 
   # Validations
 
+  validates :follower_id, :uniqueness => { :scope => [:following_id] }
+
   validates :follower_id, :presence => true
 
   validates :following_id, :uniqueness => { :scope => [:follower_id] }
