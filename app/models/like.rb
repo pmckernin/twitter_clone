@@ -5,6 +5,8 @@ class Like < ApplicationRecord
 
   # Validations
 
+  validates :post_id, :presence => true
+
   validates :user_id, :presence => true
 
   # Scopes
