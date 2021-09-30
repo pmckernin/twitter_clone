@@ -1,6 +1,9 @@
 class Like < ApplicationRecord
   # Direct associations
 
+  belongs_to :user,
+             :counter_cache => :liked_posts_count
+
   # Indirect associations
 
   # Validations
