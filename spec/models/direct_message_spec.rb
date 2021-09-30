@@ -12,5 +12,7 @@ RSpec.describe DirectMessage, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:sender_id) }
+
     end
 end
