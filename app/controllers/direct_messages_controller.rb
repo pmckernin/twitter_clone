@@ -42,8 +42,14 @@ class DirectMessagesController < ApplicationController
   # DELETE /direct_messages/1
   def destroy
     @direct_message.destroy
-    redirect_to direct_messages_url, notice: 'Direct message was successfully destroyed.'
+    message = "DirectMessage was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to direct_messages_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
