@@ -24,7 +24,12 @@ class DirectMessagesController < ApplicationController
     @direct_message = DirectMessage.new(direct_message_params)
 
     if @direct_message.save
-      redirect_to @direct_message, notice: 'Direct message was successfully created.'
+      message = 'DirectMessage was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @direct_message, notice: message
+      end
     else
       render :new
     end

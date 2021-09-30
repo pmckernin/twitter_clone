@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
+    @like = Like.new
   end
 
   # GET /posts/new
@@ -24,7 +25,12 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      message = 'Post was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @post, notice: message
+      end
     else
       render :new
     end
