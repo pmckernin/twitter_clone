@@ -8,6 +8,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :liked_posts,
+             resource: LikeResource
+
   has_many   :sent_messages,
              resource: DirectMessageResource,
              foreign_key: :sender_id
