@@ -17,4 +17,18 @@ class PostResource < ApplicationResource
 
   many_to_many :fans,
                resource: UserResource
+
+  has_many :my_followers, resource: UserResource, primary_key: :user_id do
+    assign_each do |post, users|
+      users.select do |u|
+        u.id.in?(post.my_followers.map(&:id))
+      end
+    end
+  end
+
+  filter :follower_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:my_followers).where(follows: { follower_id: value })
+    end
+  end
 end

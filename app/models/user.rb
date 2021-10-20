@@ -43,6 +43,10 @@ class User < ApplicationRecord
              through: :liked_posts,
              source: :post
 
+  has_many   :feed,
+             through: :my_follows,
+             source: :posts
+
   # Validations
 
   validates :username, uniqueness: true

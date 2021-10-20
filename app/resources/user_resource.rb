@@ -50,6 +50,20 @@ class UserResource < ApplicationResource
   many_to_many :favorites,
                resource: PostResource
 
+  has_many :feed, resource: PostResource do
+    assign_each do |user, posts|
+      posts.select do |p|
+        p.id.in?(user.feed.map(&:id))
+      end
+    end
+  end
+
+  filter :user_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:feed).where(posts: { user_id: value })
+    end
+  end
+
   filter :following_id, :integer do
     eq do |scope, value|
       scope.eager_load(:my_follows).where(follows: { following_id: value })
