@@ -12,6 +12,10 @@ class Post < ApplicationRecord
              through: :likes,
              source: :user
 
+  has_many   :my_followers,
+             through: :user,
+             source: :my_followers
+
   # Validations
 
   validates :body, presence: true

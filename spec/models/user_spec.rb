@@ -21,6 +21,8 @@ RSpec.describe User, type: :model do
     it { should have_many(:my_followers) }
 
     it { should have_many(:favorites) }
+
+    it { should have_many(:feed) }
   end
 
   describe "Validations" do

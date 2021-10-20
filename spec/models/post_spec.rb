@@ -9,6 +9,8 @@ RSpec.describe Post, type: :model do
 
   describe "InDirect Associations" do
     it { should have_many(:fans) }
+
+    it { should have_many(:my_followers) }
   end
 
   describe "Validations" do

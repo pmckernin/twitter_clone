@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :likes,
-                                                :fans).page(params[:page]).per(10)
+                                                :my_followers, :fans).page(params[:page]).per(10)
   end
 
   def show
